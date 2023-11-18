@@ -36,7 +36,7 @@ const Links = () => {
         </Link>
       </button>
       <button
-        className={pathname === "/assistant"
+        className={(pathname === "/assistant" || pathname === "/assistant/new")
           ? current_page_btn
           : inactive_btn_style}
       >
