@@ -17,10 +17,19 @@ const config: Config = {
         "light-brown": "#BB8378",
         "dark-cyan": "#2F90AE",
         "cyan": "#4CA2BA",
-        "light-cyan": "#6EB0CB",
+        "light-cyan": "#6EB0CB"
       },
     },
   },
   plugins: [],
+  animation: {
+    'flip': 'flip 5s linear infinite',
+  },
+  keyframes: {
+    flip: {
+      '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
+      '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
+    },
+  },
 };
 export default config;

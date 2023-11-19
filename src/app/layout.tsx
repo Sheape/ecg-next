@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { EdgeStoreProvider } from "@/lib/edgestore";
-import "material-icons/iconfont/material-icons.css"
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +18,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <EdgeStoreProvider>{children}</EdgeStoreProvider>
+        <ClerkProvider
+          appearance={{
+            layout: {
+              logoImageUrl: "/logo.png"
+            },
+            variables: {
+              colorPrimary: "#0792C3"
+            }
+          }}
+        >
+          {children}
+        </ClerkProvider>
       </body>
     </html>
   );
