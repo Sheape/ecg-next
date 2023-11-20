@@ -3,15 +3,15 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import FileUpload from "@/components/FileUpload";
 import { useState } from "react";
-import { getUserId } from "@/app/actions"
+import { getUserId, getId, updateDbPredictions } from "@/app/actions";
 
 const gap_padding = "p-3"
 
-const send = async (e, url, recordId) => {
+const send = async (e, filename, recordId) => {
   const formData = new FormData(e.currentTarget);
   const userId = await getUserId();
 
-  fetch("/api/add-record", {
+  const add_record = await fetch("/api/add-record", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -23,9 +23,35 @@ const send = async (e, url, recordId) => {
       age: parseInt(formData.get("age")),
       symptoms: formData.get("symptoms"),
       recordId,
-      imageLink: url
+      imagePath: filename
     })
-  }).then(() => window.location.reload())
+  })
+
+  const r2filename = `${recordId}-${filename}`
+
+  const prediction = await fetch("http://why-carlos.gl.at.ply.gg:26052/predict/ecg", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      filename: r2filename
+    })
+  })
+  const pred_json = await prediction.json()
+
+  const updateDb = updateDbPredictions(recordId, pred_json)
+
+  const plotECG = await fetch("http://why-carlos.gl.at.ply.gg:26052/plot", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      filename: r2filename
+    })
+  })
+  const plot_json = await plotECG.json()
 }
 
 const PatientNameInput = () => {
@@ -105,7 +131,7 @@ const Tabs = ({ activeTab, setActiveTab }) => {
 }
 
 const TabContent = ({ activeTab }) => {
-  const [url, setUrl] = useState()
+  const [filename, setFilename] = useState()
   const [recordId, setRecordId] = useState()
 
   return (
@@ -113,10 +139,10 @@ const TabContent = ({ activeTab }) => {
       {activeTab === 'Single' &&
         (
           <>
-            <FileUpload setUrl={setUrl} setRecordId={setRecordId} />
+            <FileUpload setFilename={setFilename} setRecordId={setRecordId} />
             <form onSubmit={(e) => {
               e.preventDefault()
-              send(e, url, recordId)
+              send(e, filename, recordId)
             }}>
               <div className="flex flex-col px-10 max-w-full">
                 <PatientNameInput />

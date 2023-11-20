@@ -13,7 +13,7 @@ const tables = [
       { name: "userId", type: "string", notNull: true, defaultValue: "null" },
       { name: "recordId", type: "string", notNull: true, defaultValue: "null" },
       {
-        name: "imageLink",
+        name: "imagePath",
         type: "string",
         notNull: true,
         defaultValue: "null",

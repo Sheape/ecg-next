@@ -2,7 +2,6 @@
 import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { FileUp } from 'lucide-react';
-import axios from 'axios';
 
 const UploadButton = () => {
   return (
@@ -15,28 +14,34 @@ const UploadButton = () => {
   )
 }
 
-export default function FileUpload({ setUrl, setRecordId }) {
+export default function FileUpload({ setFilename, setRecordId }) {
   const onDrop = useCallback(async (acceptedFiles) => {
     const file = acceptedFiles[0];
     file.extension = file.name.split('.').pop(); // FIX: Better implementation of extension
 
-    const response = await axios.post('/api/r2-file-upload', {
-      fileName: file.name,
-      fileType: file.extension
+    const response = await fetch('/api/r2-file-upload', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        fileName: file.name,
+        fileType: file.extension
+      })
     });
 
-    const { url, recordId } = response.data;
-    setUrl(url)
+    const response_json = await response.json();
+    const { url, recordId } = response_json;
+    setFilename(file.name)
     setRecordId(recordId)
 
-    const formData = new FormData();
-    formData.append('file', file);
-
-    await axios.put(url, formData, {
+    await fetch(url, {
+      method: 'PUT',
       headers: {
-        'Content-Type': file.type,
+        'Content-Type': file.type
       },
-    });
+      body: file
+    })
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({

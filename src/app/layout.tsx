@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,20 +17,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="light" >
       <body className={inter.className}>
-        <ClerkProvider
-          appearance={{
-            layout: {
-              logoImageUrl: "/logo.png"
-            },
-            variables: {
-              colorPrimary: "#0792C3"
-            }
-          }}
-        >
-          {children}
-        </ClerkProvider>
+        <Providers>
+          <ClerkProvider
+            appearance={{
+              layout: {
+                logoImageUrl: "/logo.png"
+              },
+              variables: {
+                colorPrimary: "#0792C3"
+              }
+            }}
+          >
+            {children}
+          </ClerkProvider>
+        </Providers>
       </body>
     </html>
   );
