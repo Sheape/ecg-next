@@ -1,5 +1,5 @@
 'use server'
-import { getXataClient } from "xata";
+import { getXataClient } from "@/xata";
 import { withSession } from "@clerk/nextjs";
 
 export async function POST(req){
