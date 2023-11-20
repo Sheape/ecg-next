@@ -7,6 +7,12 @@ const getUserId = async () => {
   return String(userId);
 }
 
+const getRecords = async (userId) => {
+  const xata = getXataClient();
+  const user = await xata.db.ecg.search(userId)
+  return user
+}
+
 const getId = async (recordId) => {
   const xata = getXataClient();
   const idUnfiltered = await xata.db.ecg.search(recordId)
@@ -25,4 +31,4 @@ const updateDbPredictions = async (recordId, prediction) => {
 }
 
 
-export { getId, getUserId, updateDbPredictions }
+export { getId, getUserId, updateDbPredictions, getRecords }

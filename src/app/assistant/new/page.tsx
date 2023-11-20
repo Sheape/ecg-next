@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import FileUpload from "@/components/FileUpload";
 import { useState } from "react";
 import { getUserId, getId, updateDbPredictions } from "@/app/actions";
+import { redirect } from "next/navigation";
 
 const gap_padding = "p-3"
 
@@ -29,7 +30,7 @@ const send = async (e, filename, recordId) => {
 
   const r2filename = `${recordId}-${filename}`
 
-  const prediction = await fetch("http://why-carlos.gl.at.ply.gg:26052/predict/ecg", {
+  const prediction = await fetch("http://52.220.33.35/predict/ecg", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -42,7 +43,7 @@ const send = async (e, filename, recordId) => {
 
   const updateDb = updateDbPredictions(recordId, pred_json)
 
-  const plotECG = await fetch("http://why-carlos.gl.at.ply.gg:26052/plot", {
+  const plotECG = await fetch("http://52.220.33.35/plot", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -52,6 +53,8 @@ const send = async (e, filename, recordId) => {
     })
   })
   const plot_json = await plotECG.json()
+
+  redirect(`/assistant/${recordId}`)
 }
 
 const PatientNameInput = () => {
