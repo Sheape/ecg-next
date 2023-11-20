@@ -82,7 +82,7 @@ export default async function Record({ params }) {
           <Image className="mx-auto max-w-[80%]" src={`${r2PublicBucket}/${recordId}-${pngFile}`} />
           <div className="grid grid-cols-2 gap-4 mt-4 justify-items-center">
             {Object.entries(prediction.classifications).map(([label, value]) => (
-              <Progress color="primary" className="max-w-md" label={label} showValueLabel={true} size="md" value={value} maxValue={1.0} />
+              <Progress key="progress" color="primary" className="max-w-md" label={label} showValueLabel={true} size="md" value={value} maxValue={1.0} />
             ))}
           </div>
         </div>
