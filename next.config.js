@@ -5,6 +5,9 @@ const nextConfig = {
 },
     typescript: {
     ignoreBuildErrors: true
+    },
+    serverRuntimeConfig: {
+    runtime: 'nodejs'
     }
 }
 
