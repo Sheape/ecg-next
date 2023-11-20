@@ -27,7 +27,7 @@ export default async function Assistant() {
         {
           actualRecords.map((item, index) => {
             return (
-              <Card className="w-[20%] h-60" shadow='sm' isPressable>
+              <Card key="cards" className="w-[20%] h-60" shadow='sm' isPressable>
                 <CardBody>
                   <Image radius="none" className="w-full object-cover scale-[5]" src={`${r2PublicBucket}/${item.recordId}-${item.imagePath.replace(/\.[^/.]+$/, ".png")}`} />
                 </CardBody>

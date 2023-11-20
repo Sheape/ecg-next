@@ -60,7 +60,7 @@ const send = async (e, filename, recordId) => {
 const PatientNameInput = () => {
   return (
     <div className="flex flex-col p-3">
-      <p className="text-hr-text">Patient's Name</p>
+      <p className="text-hr-text">Patients Name</p>
       <input className="border-2 border-gray-200 text-hr-text p-2 rounded-lg" name="patientName" type="text" />
     </div>
   )
