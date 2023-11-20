@@ -1,3 +1,5 @@
+
+export const runtime = 'nodejs'
 "use client"
 import Image from "next/image";
 import Navbar from "@/components/Navbar";

@@ -1,4 +1,6 @@
 'use server'
+
+export const runtime = 'nodejs'
 import { getXataClient } from "@/xata";
 import { withSession } from "@clerk/nextjs";
 
