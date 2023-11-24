@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 
-export const runtime = "edge"
 export default function Home() {
   return (
     <>

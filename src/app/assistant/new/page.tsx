@@ -7,7 +7,6 @@ import { getUserId, getId, updateDbPredictions } from "@/app/actions";
 import { redirect } from "next/navigation";
 
 const gap_padding = "p-3"
-export const runtime = "edge"
 
 const send = async (e, filename, recordId) => {
   const formData = new FormData(e.currentTarget);

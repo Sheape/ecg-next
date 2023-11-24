@@ -4,7 +4,6 @@ import { redirect } from "next/navigation";
 import { getRecords } from "@/app/actions";
 import { Button, Card, CardBody, CardFooter, Image } from "@nextui-org/react";
 
-export const runtime = "edge"
 const r2PublicBucket = 'https://pub-dbb2b6348bb94fb48b304e8a044d5434.r2.dev';
 export default async function Assistant() {
   const { userId } = auth();
