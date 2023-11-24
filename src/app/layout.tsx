@@ -5,7 +5,6 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
-export const runtime = "nodejs";
 
 export const metadata: Metadata = {
   title: "HeartRead",

@@ -1,4 +1,5 @@
 import { getXataClient } from "@/xata";
+export const runtime = "edge";
 
 export async function POST(req) {
   const xataClient = getXataClient();
