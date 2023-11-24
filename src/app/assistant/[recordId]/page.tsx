@@ -11,6 +11,8 @@ import {
   CardBody
 } from '@nextui-org/react';
 
+export const runtime = "edge"
+
 function PatientName({ patientName }) {
   return (
     <div className="flex items-center mx-auto">
