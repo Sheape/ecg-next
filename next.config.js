@@ -6,8 +6,8 @@ const nextConfig = {
     typescript: {
         ignoreBuildErrors: true
     },
-    webpack: {
-        nextRuntime: "edge"
+    serverRuntimeConfig: {
+        runtime: 'edge'
     }
 }
 
