@@ -1,5 +1,3 @@
-
-export const runtime = 'nodejs'
 import Navbar from "@/components/Navbar";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";

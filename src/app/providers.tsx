@@ -1,7 +1,5 @@
 'use client'
 
-export const runtime = 'nodejs'
-
 import {NextUIProvider} from '@nextui-org/react'
 
 export function Providers({children}: { children: React.ReactNode }) {

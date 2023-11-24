@@ -1,5 +1,3 @@
-
-export const runtime = 'nodejs'
 import { getXataClient } from "@/xata";
 
 export async function POST(req) {

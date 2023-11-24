@@ -1,7 +1,4 @@
-
 "use server"
-
-export const runtime = 'nodejs'
 import { auth } from "@clerk/nextjs";
 import { getXataClient } from "@/xata";
 
