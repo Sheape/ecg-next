@@ -1,4 +1,3 @@
-'use server'
 import { getXataClient } from "@/xata";
 import { withSession } from "@clerk/nextjs";
 
