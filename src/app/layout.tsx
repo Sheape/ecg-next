@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
-import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,20 +17,16 @@ export default function RootLayout({
   return (
     <html lang="en" className="light" >
       <body className={inter.className}>
-        <Providers>
-          <ClerkProvider
-            appearance={{
-              layout: {
-                logoImageUrl: "/logo.png"
-              },
-              variables: {
-                colorPrimary: "#0792C3"
-              }
-            }}
-          >
-            {children}
-          </ClerkProvider>
-        </Providers>
+        appearance={{
+          layout: {
+            logoImageUrl: "/logo.png"
+          },
+          variables: {
+            colorPrimary: "#0792C3"
+          }
+        }}
+        >
+        {children}
       </body>
     </html>
   );

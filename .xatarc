@@ -1,6 +1,0 @@
-{
-  "databaseURL": "https://Sheape-s-workspace-a1u55j.ap-southeast-2.xata.sh/db/heartread",
-  "codegen": {
-    "output": "src/xata.ts"
-  }
-}
