@@ -30,7 +30,7 @@ const send = async (e, filename, recordId) => {
 
   const r2filename = `${recordId}-${filename}`
 
-  const prediction = await fetch("http://34.81.220.108:80/predict/ecg", {
+  const prediction = await fetch("http://object-league.gl.at.ply.gg/predict/ecg", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -43,7 +43,7 @@ const send = async (e, filename, recordId) => {
 
   const updateDb = updateDbPredictions(recordId, pred_json)
 
-  const plotECG = await fetch("http://34.81.220.108:80/plot", {
+  const plotECG = await fetch("http://object-league.gl.at.ply.gg/plot", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
