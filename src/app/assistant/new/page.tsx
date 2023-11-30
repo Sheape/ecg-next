@@ -30,7 +30,7 @@ const send = async (e, filename, recordId) => {
 
   const r2filename = `${recordId}-${filename}`
 
-  const prediction = await fetch("http://52.220.33.35/predict/ecg", {
+  const prediction = await fetch("http://34.81.220.108/predict/ecg", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -43,7 +43,7 @@ const send = async (e, filename, recordId) => {
 
   const updateDb = updateDbPredictions(recordId, pred_json)
 
-  const plotECG = await fetch("http://52.220.33.35/plot", {
+  const plotECG = await fetch("http://34.81.220.108/plot", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
