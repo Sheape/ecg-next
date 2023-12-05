@@ -1,3 +1,5 @@
+import * as fs from 'node:fs';
+
 export async function POST(req) {
   const request = await req.formData()
 
