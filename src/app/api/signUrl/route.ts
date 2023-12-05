@@ -22,8 +22,8 @@ export async function POST(req) {
     body: file
   })
 
-  const result_json = await result.json()
-  console.log(result_json);
+  const result_text = await result.text()
+  console.log(result_text);
 
   return new Response(JSON.stringify({ status: "Ok" }));
 }
