@@ -8,10 +8,9 @@ import { useRouter } from "next/navigation";
 
 const gap_padding = "p-3"
 
-const send = async (e, filename, recordId) => {
+const send = async (e, filename, recordId, router) => {
   const formData = new FormData(e.currentTarget);
   const userId = await getUserId();
-  const router = useRouter()
 
   const add_record = await fetch("/api/add-record", {
     method: "POST",
@@ -137,6 +136,7 @@ const Tabs = ({ activeTab, setActiveTab }) => {
 const TabContent = ({ activeTab }) => {
   const [filename, setFilename] = useState()
   const [recordId, setRecordId] = useState()
+  const router = useRouter()
 
   return (
     <div className="flex p-10 mx-auto items-center max-w-6xl min-h-[80vh]">
@@ -146,7 +146,7 @@ const TabContent = ({ activeTab }) => {
             <FileUpload setFilename={setFilename} setRecordId={setRecordId} />
             <form onSubmit={(e) => {
               e.preventDefault()
-              send(e, filename, recordId)
+              send(e, filename, recordId, router)
             }}>
               <div className="flex flex-col px-10 max-w-full">
                 <PatientNameInput />
