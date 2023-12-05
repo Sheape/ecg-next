@@ -1,4 +1,4 @@
-export const runtime = "edge";
+import { File } from '@web-std/file'
 
 export async function POST(req) {
   const request = await req.formData()

@@ -13,6 +13,7 @@
     "@aws-sdk/s3-request-presigner": "^3.454.0",
     "@clerk/nextjs": "^4.27.1",
     "@nextui-org/react": "^2.2.9",
+    "@web-std/file": "^3.0.3",
     "@xata.io/cli": "^0.14.4",
     "@xata.io/client": "^0.27.0",
     "framer-motion": "^10.16.5",
