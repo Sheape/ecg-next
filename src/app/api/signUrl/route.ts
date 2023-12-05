@@ -10,7 +10,7 @@ export async function POST(req) {
   const url = request.get('url');
   const fileType = request.get('fileType');
 
-  // console.log(file.type)
+  console.log(file)
 
   await fetch(url, {
     method: 'PUT',
