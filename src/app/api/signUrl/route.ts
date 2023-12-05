@@ -14,13 +14,16 @@ export async function POST(req) {
   console.log(url)
   console.log(fileName)
 
-  await fetch(url, {
+  const result = await fetch(url, {
     method: 'PUT',
     headers: {
       'Content-Type': fileType
     },
     body: file
   })
+
+  const result_json = await result.json()
+  console.log(result_json);
 
   return new Response(JSON.stringify({ status: "Ok" }));
 }
