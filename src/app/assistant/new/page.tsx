@@ -8,11 +8,10 @@ import { useRouter } from "next/navigation";
 
 const gap_padding = "p-3"
 
-const router = useRouter()
-
 const send = async (e, filename, recordId) => {
   const formData = new FormData(e.currentTarget);
   const userId = await getUserId();
+  const router = useRouter()
 
   const add_record = await fetch("/api/add-record", {
     method: "POST",
