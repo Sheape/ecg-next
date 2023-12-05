@@ -30,5 +30,4 @@ const updateDbPredictions = async (recordId, prediction) => {
   return 0
 }
 
-
 export { getId, getUserId, updateDbPredictions, getRecords }

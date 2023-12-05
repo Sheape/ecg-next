@@ -35,17 +35,16 @@ export default function FileUpload({ setFilename, setRecordId }) {
     setFilename(file.name)
     setRecordId(recordId)
 
-    const signedUrl = await fetch('/api/signUrl', {
+    const formData = new FormData();
+    formData.append('file', file)
+    formData.append('url', url)
+    formData.append('fileType', file.type)
+    formData.append('fileName', file.name)
+
+    const signUrl = await fetch('/api/signUrl', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        url: url,
-        file: file
-      })
+      body: formData
     });
-    const signedUrlResponse = await signedUrl.json();
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({

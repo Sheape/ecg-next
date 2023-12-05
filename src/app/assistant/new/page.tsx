@@ -4,13 +4,14 @@ import Navbar from "@/components/Navbar";
 import FileUpload from "@/components/FileUpload";
 import { useState } from "react";
 import { getUserId, getId, updateDbPredictions } from "@/app/actions";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const gap_padding = "p-3"
 
 const send = async (e, filename, recordId) => {
   const formData = new FormData(e.currentTarget);
   const userId = await getUserId();
+  const router = useRouter()
 
   const add_record = await fetch("/api/add-record", {
     method: "POST",
@@ -54,7 +55,7 @@ const send = async (e, filename, recordId) => {
   })
   const plot_json = await plotECG.json()
 
-  redirect(`/assistant/${recordId}`)
+  router.push(`/assistant/${recordId}`)
 }
 
 const PatientNameInput = () => {
